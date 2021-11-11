@@ -14,6 +14,17 @@ namespace Upskillz.Utilities
         public string Message { get; set; }
         public int StatusCode { get; set; }
 
+        public Response(int statusCode, bool success, string msg, T data)
+        {
+            Data = data;
+            Succeeded = success;
+            StatusCode = statusCode;
+            Message = msg;
+        }
+        public Response()
+        {
+        }
+
         /// <summary>
         /// Sets the data to the appropriate response
         /// at run time

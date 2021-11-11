@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Upskillz.Data;
+using Upskillz.Web.Extensions;
 
 namespace Upskillz.Web
 {
@@ -31,6 +32,9 @@ namespace Upskillz.Web
               opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                  .EnableSensitiveDataLogging()
                  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+            // Configure Cloudinary
+            services.AddCloudinary(CloudinaryServiceExtension.GetAccount(Configuration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
