@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Upskillz.Core\Upskillz.Core.csproj" />
     <ProjectReference Include="..\Upskillz.Data\Upskillz.Data.csproj" />
   </ItemGroup>
 

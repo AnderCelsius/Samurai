@@ -19,6 +19,21 @@ namespace Upskillz.Core.Services
             _unitOfWork = unitOfWork;
         }
 
+        public Task<Response<Samurai>> AddSamurai(AddSamuraiDto samurai)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Response<string>> DeleteQuotesForSamurai(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Response<bool>> DeleteSamurai(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Response<Samurai>> GetSamurai(string Id)
         {
             throw new NotImplementedException();
