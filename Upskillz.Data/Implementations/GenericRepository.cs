@@ -28,19 +28,52 @@ namespace Upskillz.Data.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
+        public async Task<T> GetById(string Id)
         {
-            throw new NotImplementedException();
+            return await _context.FindAsync<T>(Id);
         }
 
-        public Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<string> includes = null)
+        public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _db;
+            if (includes != null)
+            {
+                foreach (var includeProperty in includes)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return await query.FirstOrDefaultAsync(expression);
         }
 
-        public Task Insert(T entity)
+        public async Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<string> includes = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _db;
+
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            if (includes != null)
+            {
+                foreach (var includeProperty in includes)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            return await query.ToListAsync();
+        }
+
+        public async Task Insert(T entity)
+        {
+            await _db.AddAsync(entity); 
         }
 
         public Task InsertRange(IEnumerable<T> entities)

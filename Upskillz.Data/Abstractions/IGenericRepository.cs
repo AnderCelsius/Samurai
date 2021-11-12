@@ -16,6 +16,7 @@ namespace Upskillz.Data.Abstractions
         );
 
         Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null);
+        Task<T> GetById(string Id);
         Task Insert(T entity);
         Task InsertRange(IEnumerable<T> entities);
         Task Delete(int id);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +16,22 @@ namespace Upskillz.Core.Services
     public class SamuraiService : ISamuraiService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public SamuraiService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        private readonly ILogger _logger;
+        public SamuraiService(IUnitOfWork unitOfWork, IMapper mapper, ILogger logger)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
+            _logger = logger;
         }
 
-        public Task<Response<Samurai>> AddSamurai(AddSamuraiDto samurai)
+        public async Task<Response<Samurai>> AddSamurai(AddSamuraiDto samuraiDto)
         {
-            throw new NotImplementedException();
+            var samurai = _mapper.Map<Samurai>(samuraiDto);
+            await _unitOfWork.Samurais.Insert(samurai);
+            await _unitOfWork.Save();
+
+            return null;
         }
 
         public Task<Response<string>> DeleteQuotesForSamurai(int id)
@@ -34,14 +44,21 @@ namespace Upskillz.Core.Services
             throw new NotImplementedException();
         }
 
-        public Task<Response<Samurai>> GetSamurai(string Id)
+        public async Task<Response<Samurai>> GetSamurai(string Id)
         {
-            throw new NotImplementedException();
+            var samurai = await _unitOfWork.Samurais.GetById(Id);
+            if (samurai == null)
+            {
+                return Response<Samurai>.Fail($"Samurai with Id = {Id} does not exist");
+            }
+            return Response<Samurai>.Success(string.Empty, samurai);
         }
 
-        public Task<Response<IEnumerable<Samurai>>> GetSamurais()
+        public async Task<Response<IEnumerable<Samurai>>> GetSamurais()
         {
-            throw new NotImplementedException();
+            _logger.Information("Getting all samurais");
+            var samurais = await _unitOfWork.Samurais.GetAll(includes: new List<string> { "Quotes"});
+            return Response<IEnumerable<Samurai>>.Success("Here are the Samurais", samurais);
         }
 
         public Task<Response<string>> UpdatePhoto(string samuraiId, AddImageDto imageDto)
