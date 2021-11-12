@@ -18,17 +18,22 @@ namespace Upskillz.Data.Implementations
             _context = context;
             _db = _context.Set<T>();
         }
-        public Task Delete(int id)
+        public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _db.Remove(entity);
         }
 
         public void DeleteRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            _db.RemoveRange(entities);
         }
 
         public async Task<T> GetById(string Id)
+        {
+            return await _context.FindAsync<T>(Id);
+        }
+
+        public async Task<T> GetById(int Id)
         {
             return await _context.FindAsync<T>(Id);
         }
@@ -76,14 +81,16 @@ namespace Upskillz.Data.Implementations
             await _db.AddAsync(entity); 
         }
 
-        public Task InsertRange(IEnumerable<T> entities)
+        public async Task InsertRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            await _db.AddRangeAsync(entities);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _db.Attach(entity); // Checks to see that the incoming record is different from existing record
+            _context.Entry(entity).State = EntityState.Modified;
         }
+        
     }
 }

@@ -39,18 +39,31 @@ namespace Upskillz.Core.Services
             throw new NotImplementedException();
         }
 
-        public Task<Response<bool>> DeleteSamurai(int id)
+        public async Task<Response<bool>> DeleteSamurai(string id)
         {
-            throw new NotImplementedException();
+            var samurai = await _unitOfWork.Samurais.GetById(id);
+            if(samurai == null)
+            {
+                return Response<bool>.Fail("Samurai does not exist");
+            }
+            _unitOfWork.Samurais.Delete(samurai);
+            await _unitOfWork.Save();
+            return Response<bool>.Success(string.Empty, true);
         }
 
-        public async Task<Response<Samurai>> GetSamurai(string Id)
+        public async Task<Response<Samurai>> GetSamurai(int id)
         {
-            var samurai = await _unitOfWork.Samurais.GetById(Id);
+            var includes = new List<string>() { "Quote" , "Battle" };
+
+            _logger.Information($"Attempting to get Samurai with Id = {id}");
+            var samurai = await _unitOfWork.Samurais.Get(q => q.Id == id, includes);
             if (samurai == null)
             {
-                return Response<Samurai>.Fail($"Samurai with Id = {Id} does not exist");
+                _logger.Information($"Search ended with no result");
+                return Response<Samurai>.Fail($"Samurai with Id = {id} does not exist");
             }
+
+            _logger.Information($"Samurai {samurai.Name} returned");
             return Response<Samurai>.Success(string.Empty, samurai);
         }
 

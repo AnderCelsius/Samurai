@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upskillz.Web", "Upskillz.Web\Upskillz.Web.csproj", "{84BCDB54-945E-447B-A0EF-E46483BC874F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Upskillz.Web", "Upskillz.Web\Upskillz.Web.csproj", "{84BCDB54-945E-447B-A0EF-E46483BC874F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upskillz.Models", "Upskillz.Models\Upskillz.Models.csproj", "{3FEEC963-F8A5-46A6-9A5C-8E2F7905765C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Upskillz.Models", "Upskillz.Models\Upskillz.Models.csproj", "{3FEEC963-F8A5-46A6-9A5C-8E2F7905765C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upskillz.Core", "Upskillz.Core\Upskillz.Core.csproj", "{2DF74957-5097-4DAE-86A4-EEB784CFFB37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Upskillz.Core", "Upskillz.Core\Upskillz.Core.csproj", "{2DF74957-5097-4DAE-86A4-EEB784CFFB37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upskillz.Data", "Upskillz.Data\Upskillz.Data.csproj", "{B7823245-2215-4BA0-87DA-17B849CED838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Upskillz.Data", "Upskillz.Data\Upskillz.Data.csproj", "{B7823245-2215-4BA0-87DA-17B849CED838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upskillz.Utilities", "Upskillz.Utilities\Upskillz.Utilities.csproj", "{250DD022-55DE-487B-BB60-2BFDBC5B2CB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Upskillz.Utilities", "Upskillz.Utilities\Upskillz.Utilities.csproj", "{250DD022-55DE-487B-BB60-2BFDBC5B2CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
