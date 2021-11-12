@@ -51,7 +51,7 @@ namespace Upskillz.Core.Services
             return Response<bool>.Success(string.Empty, true);
         }
 
-        public async Task<Response<Samurai>> GetSamurai(int id)
+        public async Task<Response<Samurai>> GetSamurai(string id)
         {
             var includes = new List<string>() { "Quote" , "Battle" };
 

@@ -27,8 +27,7 @@ namespace Upskillz.Data.Migrations
                 name: "Samurais",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -40,7 +39,7 @@ namespace Upskillz.Data.Migrations
                 name: "BattleSamurai",
                 columns: table => new
                 {
-                    SamuraiId = table.Column<int>(type: "integer", nullable: false),
+                    SamuraiId = table.Column<string>(type: "text", nullable: false),
                     BattleId = table.Column<int>(type: "integer", nullable: false),
                     DateJoined = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -68,7 +67,7 @@ namespace Upskillz.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Text = table.Column<string>(type: "text", nullable: true),
-                    SamuraiId = table.Column<int>(type: "integer", nullable: false)
+                    SamuraiId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -78,7 +77,7 @@ namespace Upskillz.Data.Migrations
                         column: x => x.SamuraiId,
                         principalTable: "Samurais",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

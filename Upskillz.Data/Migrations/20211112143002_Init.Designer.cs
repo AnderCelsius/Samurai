@@ -10,7 +10,7 @@ using Upskillz.Data;
 namespace Upskillz.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211110231443_Init")]
+    [Migration("20211112143002_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,8 +47,8 @@ namespace Upskillz.Data.Migrations
                     b.Property<int>("BattleId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SamuraiId")
-                        .HasColumnType("integer");
+                    b.Property<string>("SamuraiId")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("DateJoined")
                         .HasColumnType("timestamp without time zone");
@@ -67,8 +67,8 @@ namespace Upskillz.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("SamuraiId")
-                        .HasColumnType("integer");
+                    b.Property<string>("SamuraiId")
+                        .HasColumnType("text");
 
                     b.Property<string>("Text")
                         .HasColumnType("text");
@@ -82,10 +82,8 @@ namespace Upskillz.Data.Migrations
 
             modelBuilder.Entity("Upskillz.Models.Samurai", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -114,9 +112,7 @@ namespace Upskillz.Data.Migrations
                 {
                     b.HasOne("Upskillz.Models.Samurai", "Samurai")
                         .WithMany("Quotes")
-                        .HasForeignKey("SamuraiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SamuraiId");
 
                     b.Navigation("Samurai");
                 });
