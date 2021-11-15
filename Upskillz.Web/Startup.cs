@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Upskillz.Data;
+using Upskillz.Utilities;
+using Upskillz.Web.Extensions;
 
 namespace Upskillz.Web
 {
@@ -23,6 +27,18 @@ namespace Upskillz.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(opt =>
+              opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+            // Configure Cloudinary
+            services.AddCloudinary(CloudinaryServiceExtension.GetAccount(Configuration));
+
+            //Automapper Setup
+            services.AddAutoMapper(typeof(MapSetup));
+
+            services.AddMvc();
+            services.AddWebOptimizer();
             services.AddControllersWithViews();
         }
 
