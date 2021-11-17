@@ -10,8 +10,9 @@ namespace Upskillz.Web.Extensions
     {
         public static void AddDependencyInjection(this IServiceCollection services) 
         { 
-            services.AddScoped<IUnitOfWork, UnitOfWork >();
-            services.AddScoped<IImageService, ImageService >();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<ISamuraiService, SamuraiService>();
         }
     }
 }

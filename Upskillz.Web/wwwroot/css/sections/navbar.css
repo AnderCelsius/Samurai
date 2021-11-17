@@ -1,0 +1,10 @@
+﻿
+.menu li {
+    padding: 0.07rem;
+}
+
+li a {
+    color: white !important;
+    text-transform: capitalize;
+    font-weight: 600;
+}

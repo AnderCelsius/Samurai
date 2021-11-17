@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using Upskillz.Data;
 using Upskillz.Utilities;
 using Upskillz.Web.Extensions;
@@ -36,6 +37,11 @@ namespace Upskillz.Web
 
             //Automapper Setup
             services.AddAutoMapper(typeof(MapSetup));
+
+            services.AddSingleton(Log.Logger);
+
+            // Add DI for Services
+            services.AddDependencyInjection();
 
             services.AddMvc();
             services.AddWebOptimizer();
