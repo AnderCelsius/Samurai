@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Upskillz.Data;
@@ -9,9 +10,10 @@ using Upskillz.Data;
 namespace Upskillz.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211117205811_ImageurlAndShortStoryAddedToSamurai")]
+    partial class ImageurlAndShortStoryAddedToSamurai
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +94,8 @@ namespace Upskillz.Data.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<string>("ShortStory")
-                        .HasColumnType("text");
+                        .HasMaxLength(1020)
+                        .HasColumnType("character varying(1020)");
 
                     b.HasKey("Id");
 

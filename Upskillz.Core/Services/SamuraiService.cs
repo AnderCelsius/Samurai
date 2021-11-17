@@ -53,7 +53,7 @@ namespace Upskillz.Core.Services
 
         public async Task<Response<Samurai>> GetSamurai(string id)
         {
-            var includes = new List<string>() { "Quote" , "Battle" };
+            var includes = new List<string>() { "Quotes" , "Battles" };
 
             _logger.Information($"Attempting to get Samurai with Id = {id}");
             var samurai = await _unitOfWork.Samurais.Get(q => q.Id == id, includes);

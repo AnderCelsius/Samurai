@@ -1,65 +1,71 @@
 [
-    {
-        "Id": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79",
-        "Name": "Yamada Jirokichi",
-        "Quotes": [
-            {
-                "Id": 1,
-                "Text": "The way of the sword and the Way of Zen are identical, for they have the same purpose; that of killing the ego.",
-                "SamuraiId": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79"
-            },
-            {
-                "Id": 2,
-                "Text": "Sword and mind must be united. Technique by itself is insufficient, and spirit alone is not enough.,",
-                "SamuraiId": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79"
-            }
-        ]
-    },
-    {
-        "Id": "465bc6ce-3c13-47cf-82f0-32008454f6ba",
-        "Name": "Yamamoto Tsunetomo",
-        "Quotes": [
-            {
-                "Id": 3,
-                "Text": "There is surely nothing other than the single purpose of the present moment. A man's whole life is a succession of moment after moment. There will be nothing else to do, and nothing else to pursue. Live being true to the single purpose of the moment.",
-                "SamuraiId": "465bc6ce-3c13-47cf-82f0-32008454f6ba"
-            },
-            {
-                "Id": 4,
-                "Text": "To give a person an opinion one must first judge well whether that person is of the disposition to receive it or not.",
-                "SamuraiId": "465bc6ce-3c13-47cf-82f0-32008454f6ba"
-            },
-            {
-                "Id": 5,
-                "Text": "Be true to the thought of the moment and avoid distraction. Other than continuing to exert yourself, enter into nothing else, but go to the extent of living single thought by single thought.",
-                "SamuraiId":"465bc6ce-3c13-47cf-82f0-32008454f6ba"
-            }
-        ]
-    },
-    {
-        "Id": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d",
-        "Name": "Morihei Ueshiba",
-        "Quotes": [
-            {
-                "Id": 6,
-                "Text": "The real Way of a Warrior is to prevent such slaughter — it is the Art of Peace, the power of love.",
-                "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
-            },
-            {
-                "Id": 7,
-                "Text": "There are no contests in the Art of Peace. A true warrior is invincible because he or she contests with nothing.",
-                "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
-            },
-            {
-                "Id": 9,
-                "Text": "A warrior is always engaged in a life-and-death struggle for Peace.",
-                "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
-            },
-            {
-                "Id": 10,
-                "Text": "The Way of a Warrior is to establish harmony.",
-                "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
-            }
-        ]
-    }
+  {
+    "Id": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79",
+    "Name": "Yamada Jirokichi",
+    "ImageUrl": "https://mensagens.culturamix.com/blog/wp-content/uploads/2019/05/Yamada-Jirokichi.jpg",
+    "ShortStory": "Jirokichi Yamada (Yamada Jirokichi, January 9, 1863 – October 23, 1930) was the 15th and last official headmaster or sōke of Kashima Shinden Jikishinkage-ryū, a (koryū) of the Japanese martial art of swordsmanship (kenjutsu). He was a student of the 14th sōke, Sakakibara Kenkichi.In the early twentieth century (1927) he published a book documenting all five classical kata of this koryū that originates from the sixteenth century. Probably the foremost student of Sakakibara Kenkichi, headmaster of the Jikishinkage ryu (who never named a formal successor), he was also famous for pushing his students to extremes. Among his students was Omori Sogen (1904-1994), who later became an influential Zen teacher. Sogen not only studied the sword, but also calligraphy in what may be considered Tesshu’s tradition – he was, in fact, something of a Tesshu enthusiast, lived in Tesshu's old house and was founder of the Tesshukai (Tesshu association). He has also left an account of a training experience that appears quite similar the training instituted by Tesshu.",
+    "Quotes": [
+      {
+        "Id": 1,
+        "Text": "The way of the sword and the Way of Zen are identical, for they have the same purpose; that of killing the ego.",
+        "SamuraiId": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79"
+      },
+      {
+        "Id": 2,
+        "Text": "Sword and mind must be united. Technique by itself is insufficient, and spirit alone is not enough.,",
+        "SamuraiId": "83fe8f03-40af-4dbe-b61b-5c6e7782cf79"
+      }
+    ]
+  },
+  {
+    "Id": "465bc6ce-3c13-47cf-82f0-32008454f6ba",
+    "Name": "Yamamoto Tsunetomo",
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Yamamoto_Tsunetomo.jpg/250px-Yamamoto_Tsunetomo.jpg",
+    "ShortStory": "Tsunetomo or Jocho , the name he took after retiring and becoming a monk, had entered into the service of Lord Mitsushige at the age of nine. For thirty years he devoted his life to the service of his lord and clan. When Nabeshima died in 1700, Yamamoto did not choose to follow his master in death in ‘junshi’ (=”suicide through fidelity”) because the master had expressed a dislike of the practice in his life. His loyalty to his Lord was unquestionable. Instead, Yamamoto followed his lord’s wishes and refrained from junshi. After some disagreements with Nabeshima’s successor, Yamamoto renounced the world and retired to a hermitage in the mountains, to live “in the shadow of the leaves.” At the age of forty-one he received Ketsu-myaku (blood relationship) from the priest Tannen. Later in life (between 1709 and 1716), he narrated many of his thoughts to a fellow samurai, Tsuramoto Tashiro. Many of these aphorisms concerned his lord’s father and grandfather Naoshige and the failing ways of the samurai caste. These commentaries were compiled and published in 1716 under the title of Hagakure. The work itself placed great importance on a samurai’s commitment to death. Tsunetomo believed that becoming one with death in one’s thoughts, even in life, was the highest attainment of purity and focus. The sentence, “Bushido is a way of dying,” is often said to summarize the work’s central theme.",
+    "Quotes": [
+      {
+        "Id": 3,
+        "Text": "There is surely nothing other than the single purpose of the present moment. A man's whole life is a succession of moment after moment. There will be nothing else to do, and nothing else to pursue. Live being true to the single purpose of the moment.",
+        "SamuraiId": "465bc6ce-3c13-47cf-82f0-32008454f6ba"
+      },
+      {
+        "Id": 4,
+        "Text": "To give a person an opinion one must first judge well whether that person is of the disposition to receive it or not.",
+        "SamuraiId": "465bc6ce-3c13-47cf-82f0-32008454f6ba"
+      },
+      {
+        "Id": 5,
+        "Text": "Be true to the thought of the moment and avoid distraction. Other than continuing to exert yourself, enter into nothing else, but go to the extent of living single thought by single thought.",
+        "SamuraiId": "465bc6ce-3c13-47cf-82f0-32008454f6ba"
+      }
+    ]
+  },
+  {
+    "Id": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d",
+    "Name": "Morihei Ueshiba",
+    "ImageUrl": "https://th.bing.com/th/id/OIP.FMQKPW4cPrbt8H9Jh3eXJQHaJc?pid=ImgDet&rs=1",
+    "ShortStory": "Murihei Ueshiba (December 14, 1883 – April 26, 1969) was a martial artist and founder of the Japanese martial art of Aikido. He is often referred to as 'the founder' Kaiso or Ōsensei, 'Great Teacher. The son of a landowner from Tanabe, Ueshiba studied a number of martial arts in his youth, and served in the Japanese Army during the Russo-Japanese War. After being discharged in 1907, he moved to Hokkaidō as the head of a pioneer settlement; here he met and studied with Takeda Sokaku, the founder of Daitō-ryū aiki-jūjutsu. On leaving Hokkaido in 1919, Ueshiba joined the Ōmoto-kyō movement, a Shinto sect, in Ayabe, where he served as a martial arts instructor and opened his first dojo. He accompanied the head of the Ōmoto-kyō group, Onisaburo Deguchi, on an expedition to Mongolia in 1924, where they were captured by Chinese troops and returned to Japan. The following year, he experienced a spiritual enlightenment, stating that, “a golden spirit sprang up from the ground, veiled my body, and changed my body into a golden one. After this experience, his martial arts skill appeared to be greatly increased. Ueshiba moved to Tokyo in 1926, where he set up the Aikikai Hombu Dojo. In the aftermath of World War II the dojo was closed, but Ueshiba continued training at another dojo he had set up in Iwama. From the end of the war until the 1960s, he worked to promote aikido throughout Japan and abroad. He died from liver cancer in 1969.",
+    "Quotes": [
+      {
+        "Id": 6,
+        "Text": "The real Way of a Warrior is to prevent such slaughter — it is the Art of Peace, the power of love.",
+        "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
+      },
+      {
+        "Id": 7,
+        "Text": "There are no contests in the Art of Peace. A true warrior is invincible because he or she contests with nothing.",
+        "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
+      },
+      {
+        "Id": 9,
+        "Text": "A warrior is always engaged in a life-and-death struggle for Peace.",
+        "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
+      },
+      {
+        "Id": 10,
+        "Text": "The Way of a Warrior is to establish harmony.",
+        "SamuraiId": "507eb708-16b8-48b9-8e3e-8cc8cfe5a37d"
+      }
+    ]
+  }
 ]

@@ -5,7 +5,7 @@
 }
 
 <section class="container pt-5 pb-5">
-    <div class="container pt-5 m-5">
+    <div class="container pt-5">
         <h4>
             Meet our legendary Samurais
         </h4>
@@ -15,8 +15,8 @@
                 <div class="col-md-4">
                     <div class="hotel-card">
                         <div class="card-body">
-                            <a asp-action="Samurai" asp-controller="Details" asp-route-SamuraiId="@samurai.Id">
-                                <img src="" class="card-img-top" style="height:250px" alt="" />
+                            <a asp-controller="Samurai" asp-action="SamuraiDetails" asp-route-samuraiId="@samurai.Id">
+                                <img src="@samurai.ImageUrl" class="card-img-top" style="height:250px" alt="" />
                                 <h2 class="card-text mt-2">
                                     @samurai.Name
                                 </h2>
