@@ -4,10 +4,15 @@ for details on configuring this project to bundle and minify static web assets. 
 @import 'sections/navbar.css';
 @import 'sections/typography.css';
 
+.breadcrumb-item {
+    text-decoration: none;
+    color: #222630;
+}
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -32,6 +37,7 @@ a {
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -66,9 +72,13 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    clear: both;
+    position: relative;
+    margin-top: -200px;
+    margin-top: -151px;
+    height: 150px;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }

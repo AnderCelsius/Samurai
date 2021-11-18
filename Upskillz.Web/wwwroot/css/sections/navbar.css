@@ -3,6 +3,10 @@
     padding: 0.07rem;
 }
 
+.navbar-toggler-icon, navbar-toggler {
+    border-color: lightblue;
+}
+
 li a {
     color: white !important;
     text-transform: capitalize;
