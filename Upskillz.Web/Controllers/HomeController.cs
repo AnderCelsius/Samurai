@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using Upskillz.Core.Interfaces;
 using Upskillz.Web.Models;
 
 namespace Upskillz.Web.Controllers
@@ -10,15 +12,19 @@ namespace Upskillz.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger _logger;
+        private readonly IQuoteService _quoteService;
 
-        public HomeController(ILogger logger)
+        public HomeController(ILogger logger, IQuoteService quoteService)
         {
             _logger = logger;
+            _quoteService = quoteService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var quotesTask = await _quoteService.GetQuotes();
+            var quotes = quotesTask.Data;
+            return View(quotes);
         }
 
         public IActionResult Privacy()

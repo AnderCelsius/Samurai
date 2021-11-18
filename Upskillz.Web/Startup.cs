@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Upskillz.Data;
 using Upskillz.Data.Seeder;
+using Upskillz.Models;
 using Upskillz.Utilities;
 using Upskillz.Web.Extensions;
 
@@ -50,7 +52,8 @@ namespace Upskillz.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext,
+            UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -63,7 +66,7 @@ namespace Upskillz.Web
                 app.UseHsts();
             }
 
-            Seeder.SeedData(dbContext).GetAwaiter().GetResult();
+            Seeder.SeedData(dbContext, userManager, roleManager).GetAwaiter().GetResult();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

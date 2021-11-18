@@ -1,5 +1,8 @@
-﻿@{
+﻿@model IEnumerable<Quote>;
+
+@{
     ViewData["Title"] = "Home Page";
+    var featuredQuotes = @Model.Select(x => x).ToArray();
 }
 
 <!-- Masthead-->
@@ -27,22 +30,22 @@
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi bi-chat-quote"></i></div>
-                    <h3>Fully Responsive</h3>
-                    <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+                    <h3>@featuredQuotes[0].Samurai.Name</h3>
+                    <p class="lead mb-0"></p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                    <h3>Bootstrap 5 Ready</h3>
-                    <p class="lead mb-0">Featuring the latest build of the new Bootstrap 5 framework!</p>
+                    <h3>@featuredQuotes[4].Samurai.Name</h3>
+                    <p class="lead mb-0">@featuredQuotes[4].Text</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                    <h3>Easy to Use</h3>
-                    <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+                    <h3>@featuredQuotes[7].Samurai.Name</h3>
+                    <p class="lead mb-0">@featuredQuotes[7].Text</p>
                 </div>
             </div>
         </div>
@@ -54,22 +57,22 @@
         <div class="row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/2367860/screenshots/15035303/media/673d9440c439cf06053bbf5ebc57cb2b.png')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>Fully Responsive Design</h2>
-                <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+                <h2>@featuredQuotes[0].Samurai.Name</h2>
+                <p class="lead mb-0">@featuredQuotes[0].Text</p>
             </div>
         </div>
         <div class="row g-0">
             <div class="col-lg-6 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/93815/screenshots/16078083/media/b1c947b8f766ab3c8db812102e9dff7c.png')"></div>
             <div class="col-lg-6 my-auto showcase-text">
-                <h2>Updated For Bootstrap 5</h2>
-                <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
+                <h2>@featuredQuotes[5].Samurai.Name</h2>
+                <p class="lead mb-0">@featuredQuotes[5].Text</p>
             </div>
         </div>
         <div class="row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/3578981/screenshots/15961206/media/fdb91ccee3815eb85f1eb8e4123a47dd.png?compress=1&resize=1600x1200')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>Easy to Use & Customize</h2>
-                <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+                <h2>@featuredQuotes[8].Samurai.Name</h2>
+                <p class="lead mb-0">@featuredQuotes[8].Text</p>
             </div>
         </div>
     </div>

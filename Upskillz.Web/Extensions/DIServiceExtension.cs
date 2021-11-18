@@ -13,6 +13,7 @@ namespace Upskillz.Web.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<ISamuraiService, SamuraiService>();
+            services.AddScoped<IQuoteService, QuoteService>();
         }
     }
 }

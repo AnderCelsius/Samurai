@@ -5,29 +5,31 @@
 }
 
 <section class="container pt-5 pb-5">
-    <div class="container pt-5">        
+    <div class="container pt-5">
+        <div class="mb-3 col-md-6">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search">
+        </div>
         <h4>
             Meet our legendary Samurais
         </h4>
-        <div class=row>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+
             @foreach (var samurai in Model)
             {
-                <div class="col-md-4">
-                    <div class="hotel-card">
+                <div class="col-sm-4 py-3">
+                    <div class="card h-100">
                         <div class="card-body">
-                            <a asp-controller="Samurai" asp-action="SamuraiDetails" asp-route-samuraiId="@samurai.Id">
-                                <img src="@samurai.ImageUrl" class="card-img-top" style="height:250px" alt="" />
-                                <h2 class="card-text mt-2">
-                                    @samurai.Name
-                                </h2>
-                                <p></p>
-                            </a>
+                            <h3 class="card-title">@samurai.Name</h3>
+                            <p class="card-text"><em>@samurai.Quotes.FirstOrDefault().Text.</em></p>                            
+                        </div>
+                        <div class="card-footer d-md-block">
+                            <a asp-controller="Samurai" asp-action="SamuraiDetails" asp-route-samuraiId="@samurai.Id" class="btn btn-dark btn-block">Go somewhere</a>
                         </div>
                     </div>
                 </div>
             }
-        </div>
 
+        </div>
     </div>
 </section>
 
