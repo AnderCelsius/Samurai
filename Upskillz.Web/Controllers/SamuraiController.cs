@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Upskillz.Core.Interfaces;
 using Upskillz.Data.Abstractions;
@@ -14,6 +15,9 @@ namespace Upskillz.Web.Controllers
         {
             _samuraiService = samuraiService;
         }
+
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> AllSamurais()
         {
             var samuraisTask = await _samuraiService.GetSamurais();
@@ -22,6 +26,7 @@ namespace Upskillz.Web.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> SamuraiDetails(string samuraiId)
         {
             var samuraiTask = await _samuraiService.GetSamurai(samuraiId);

@@ -14,6 +14,7 @@ namespace Upskillz.Web.Extensions
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<ISamuraiService, SamuraiService>();
             services.AddScoped<IQuoteService, QuoteService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
         }
     }
 }

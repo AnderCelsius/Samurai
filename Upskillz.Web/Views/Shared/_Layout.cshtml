@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<AppUser> signInManager;
+@{
+    var loggedInUser = await signInManager.UserManager.GetUserAsync(User);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +15,7 @@
 </head>
 <body>
     <header>
-color-- Navbar -->
+        color-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-navbar-dark fixed-top" style="background-color: #222630;">
             <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
@@ -36,9 +41,32 @@ color-- Navbar -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
-                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Welcome @loggedInUser.FirstName
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li style="color:red"><a class="dropdown-item nav-link">Action</a></li>
+                                    <li style="color:red"><a class="dropdown-item nav-link" style="color:#222630">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="dropdown-item">
+                                        <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <button class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</button>
+                                        </form>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -59,7 +87,7 @@ color-- Navbar -->
                     <ul class="list-inline mb-2">
                         <li class="list-inline-item"><a href="#!">About</a></li>
                         <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Contact</a></li>
+                        <li class="list-inline-item"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                         <li class="list-inline-item">⋅</li>
                         <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
                         <li class="list-inline-item">⋅</li>
@@ -83,6 +111,14 @@ color-- Navbar -->
             </div>
         </div>
     </footer>
+    <script>
+        $(document).ready(function(){
+            $("ul").on("click", "li", function () {
+                $('ul li').removeAttr('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

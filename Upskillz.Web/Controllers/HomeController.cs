@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Upskillz.Core.Interfaces;
@@ -9,6 +10,7 @@ using Upskillz.Web.Models;
 
 namespace Upskillz.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger _logger;
@@ -20,6 +22,7 @@ namespace Upskillz.Web.Controllers
             _quoteService = quoteService;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var quotesTask = await _quoteService.GetQuotes();

@@ -10,7 +10,7 @@ namespace Upskillz.Core.Interfaces
 {
     public interface IAuthenticationService
     {
-        Task<Response<LoginResponseDto>> Login(LoginDto model);
+        Task<Response<string>> Login(LoginDto model);
         Task<Response<string>> Register(RegisterDto model);
     }
 }

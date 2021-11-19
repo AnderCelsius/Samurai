@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using Upskillz.Models;
+using Upskillz.Models.Dtos.Authentication;
 using Upskillz.Models.Dtos.Samurai;
 
 namespace Upskillz.Utilities
@@ -11,6 +12,9 @@ namespace Upskillz.Utilities
         {
             // Samurai
             CreateMap<Samurai, AddSamuraiDto>().ReverseMap();
+
+            //Authentication
+            CreateMap<AppUser, RegisterDto>().ReverseMap();
         }
     }
 }

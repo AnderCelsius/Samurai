@@ -5,28 +5,34 @@ using Upskillz.Models.Dtos.Authentication;
 using Upskillz.Utilities;
 using Upskillz.Core.Interfaces;
 using AutoMapper;
-using Upskillz.Data.Abstractions;
 using System.Linq;
 
 namespace Upskillz.Core.Services
 {
-    internal class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
 
-        public AuthenticationService(UserManager<AppUser> userManager, IUnitOfWork unitOfWork,
+        public AuthenticationService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
             IMapper mapper)
         {
             _userManager = userManager;
-            _unitOfWork = unitOfWork;
+            _signInManager = signInManager;
             _mapper = mapper;
         }
 
-        public Task<Response<LoginResponseDto>> Login(LoginDto model)
+        public async Task<Response<string>> Login(LoginDto model)
         {
-            return null;
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+            if (result.Succeeded)
+            {
+                return Response<string>.Success(string.Empty, "Login Succesful");
+            }
+
+            return Response<string>.Fail("Invalid Credentials"); ;
         }
 
         public async Task<Response<string>> Register(RegisterDto model)
