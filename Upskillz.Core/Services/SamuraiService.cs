@@ -76,6 +76,7 @@ namespace Upskillz.Core.Services
 
         public async Task<Response<IEnumerable<Samurai>>> Search(string name)
         {
+            _logger.Information($"Searching for Samurais where name contain {name}");
             var samurais = await _unitOfWork.Samurais.GetAll(q => 
             q.Name.Contains(name));
             return Response<IEnumerable<Samurai>>.Success("here are the results", samurais);
