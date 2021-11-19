@@ -5,14 +5,24 @@
 }
 
 <section class="container pt-5 pb-5">
-    <div class="container pt-5">
-        <div class="mb-3 col-md-6">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search">
+    <div class="col-12 d-flex justify-content-center align-content-center py-3">
+        <div class="text-center align-content-center" style="width:80px; height:80px; border-radius:50px; background:#fff">
+            <img src="~/assets/img/logo.png" style="width:80px; height:80px; margin-top:20px" alt="Alternate Text" />
         </div>
-        <h4>
-            Meet our legendary Samurais
+    </div>
+    <div class="row">
+        <h5 class="text-center align-content-center pt-2 pb-3"><em>Search your favourite Samurai and see what your legend has to say...</em></h5>
+    </div>
+    <div class="container pb-5" style="max-width: 1020px">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">@@example.com</span>
+        </div>
+        <h4 class="pt-5">
+            List of Samurais
         </h4>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+         <hr style="height: 2px;"/>
+        <div class="row row-cols-1 row-cols-md-2 g-4">          
 
             @foreach (var samurai in Model)
             {
@@ -20,7 +30,7 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h3 class="card-title">@samurai.Name</h3>
-                            <p class="card-text"><em>@samurai.Quotes.FirstOrDefault().Text.</em></p>                            
+                            <p class="card-text"><em>@samurai.Quotes.FirstOrDefault().Text.</em></p>
                         </div>
                         <div class="card-footer d-md-block">
                             <a asp-controller="Samurai" asp-action="SamuraiDetails" asp-route-samuraiId="@samurai.Id" class="btn btn-dark btn-block">Go somewhere</a>
