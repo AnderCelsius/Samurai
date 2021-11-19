@@ -54,7 +54,6 @@ namespace Upskillz.Data.Seeder
                 user.EmailConfirmed = true;
                 await userManager.CreateAsync(user, "Password@123");
                 await userManager.AddToRoleAsync(user, "Admin");
-
             }
 
 

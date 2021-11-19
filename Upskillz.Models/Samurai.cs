@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Upskillz.Models
 {
-    public class Samurai
+    public class Samurai : BaseEntity
     {
-        public string Id { get; set; }
 
         [Required]
         [StringLength(50)]

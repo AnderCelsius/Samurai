@@ -35,6 +35,9 @@ namespace Upskillz.Web
               opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
+            // Configure Identity
+            services.ConfigureIdentity();
+
             // Configure Cloudinary
             services.AddCloudinary(CloudinaryServiceExtension.GetAccount(Configuration));
 
