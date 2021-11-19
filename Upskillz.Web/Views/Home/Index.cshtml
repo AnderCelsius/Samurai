@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Home Page";
     var featuredQuotes = @Model.Select(x => x).ToArray();
+    var quotes = @Model.Select(x => x.Text);
+    var samurais = @Model.Select(x => x.Samurai.Name);
+    Random rnd = new Random();
+    int one = rnd.Next(featuredQuotes.Length);
+    int two = rnd.Next(featuredQuotes.Length);
+    int three = rnd.Next(featuredQuotes.Length);
 }
 
 <!-- Masthead-->
@@ -16,7 +22,7 @@
                         <h1 class="mb-5">Of old the expert in battle would first make himself invincible and then wait for his enemy to expose his vulnerability.</h1>
                     </blockquote>  
                     <figcaption class="blockquote-footer" id="quote-footer-main">
-                        <cite>Sun Tzu</cite>
+                        <strong><cite>Sun Tzu</cite></strong>
                     </figcaption>
                 </div>
             </div>
@@ -26,26 +32,27 @@
 <!-- Icons Grid-->
 <section class="features-icons bg-light text-center">
     <div class="container">
+        <h2 class="pb-2 pt-0">Weapons of the Samurai</h2>
         <div class="row">
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi bi-chat-quote"></i></div>
-                    <h3>@featuredQuotes[0].Samurai.Name</h3>
-                    <p class="lead mb-0"></p>
+                    <div class="features-icons-icon d-flex"><img class="bi-layers m-auto text-primary" src="https://img.icons8.com/dusk/64/000000/katana-sword.png"/></div>
+                    <h3>Katana</h3>
+                    <p class="lead mb-0">A katana (刀 or かたな or カタナ) is a Japanese sword characterized by a curved, single-edged blade with a circular or squared guard and long grip to accommodate two hands. Developed later than the tachi, it was used by samurai in feudal Japan and worn with the blade facing upward.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                    <h3>@featuredQuotes[4].Samurai.Name</h3>
-                    <p class="lead mb-0">@featuredQuotes[4].Text</p>
+                    <div class="features-icons-icon d-flex"><img class="bi-layers m-auto text-primary" src="https://img.icons8.com/ios-glyphs/90/000000/horse.png"/></div>
+                    <h3>Horse</h3>
+                    <p class="lead mb-0">The horses ridden by the samurai were mostly sturdy Kisouma, native horses that resembled stocky ponies rather than modern-day thoroughbreds. They were stub faced, long haired, short legged, shaggy looking creatures, their backs averaging about 120 to 140cm in height.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                    <h3>@featuredQuotes[7].Samurai.Name</h3>
-                    <p class="lead mb-0">@featuredQuotes[7].Text</p>
+                    <div class="features-icons-icon d-flex"><img class="bi-terminal m-auto text-primary" src="https://img.icons8.com/color/96/000000/samurai-helmet.png"/></div>
+                    <h3>Kabuto</h3>
+                    <p class="lead mb-0">Kabuto (兜, 冑) is a type of helmet first used by ancient Japanese warriors, and in later periods, they became an important part of the traditional Japanese armour worn by the samurai class and their retainers in feudal Japan.</p>
                 </div>
             </div>
         </div>
@@ -57,22 +64,22 @@
         <div class="row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/2367860/screenshots/15035303/media/673d9440c439cf06053bbf5ebc57cb2b.png')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>@featuredQuotes[0].Samurai.Name</h2>
-                <p class="lead mb-0">@featuredQuotes[0].Text</p>
+                <h2 id="samOne">@*@featuredQuotes[one].Samurai.Name*@</h2>
+                <p class="lead mb-0"><q id="quoteOne">@*@featuredQuotes[one].Text*@</q></p>
             </div>
         </div>
         <div class="row g-0">
             <div class="col-lg-6 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/93815/screenshots/16078083/media/b1c947b8f766ab3c8db812102e9dff7c.png')"></div>
             <div class="col-lg-6 my-auto showcase-text">
-                <h2>@featuredQuotes[5].Samurai.Name</h2>
-                <p class="lead mb-0">@featuredQuotes[5].Text</p>
+                <h2 id="samTwo">@featuredQuotes[two].Samurai.Name</h2>
+                <p id="quoteTwo" class="lead mb-0"><q>@featuredQuotes[two].Text</q></p>
             </div>
         </div>
         <div class="row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://cdn.dribbble.com/users/3578981/screenshots/15961206/media/fdb91ccee3815eb85f1eb8e4123a47dd.png?compress=1&resize=1600x1200')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>@featuredQuotes[8].Samurai.Name</h2>
-                <p class="lead mb-0">@featuredQuotes[8].Text</p>
+                <h2 id="samThree">@featuredQuotes[three].Samurai.Name</h2>
+                <p id="quoteThree" class="lead mb-0"><q>@featuredQuotes[three].Text</q></p>
             </div>
         </div>
     </div>
@@ -80,25 +87,25 @@
 <!-- Testimonials-->
 <section class="testimonials text-center bg-light">
     <div class="container">
-        <h2 class="mb-5">What people are saying...</h2>
+        <h2 class="mb-5 pt-5">What people are saying...</h2>
         <div class="row">
             <div class="col-lg-4">
                 <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
+                    <img class="img-fluid rounded-circle mb-3" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80" alt="..." />
                     <h5>Margaret E.</h5>
                     <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
+                    <img class="img-fluid rounded-circle mb-3" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="..." />
                     <h5>Fred S.</h5>
                     <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
+                    <img class="img-fluid rounded-circle mb-3" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cG9ydHJhaXR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="..." />
                     <h5>Sarah W.</h5>
                     <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
                 </div>
@@ -151,6 +158,54 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            const quotes = @Html.Raw(Json.Serialize(quotes));
+            const samurais = @Html.Raw(Json.Serialize(samurais));
+
+            const combineArrays = (first, second) => {
+               return first.reduce((acc, val, ind) => {
+                  acc[val] = second[ind];
+                  return acc;
+               }, {});
+            };
+
+            const sam_quote_one = combineArrays(samurais, quotes);
+
+            console.log(sam_quote_one);
+
+            var num = setInterval(function() {
+                Math.floor(Math.random() * quotes.length);
+            })
+
+            setInterval(function() {
+                const first = combineArrays(samurais, quotes);
+                const size = Object.keys(first).length;
+                let samurai = Object.keys(first)[Math.floor(Math.random() * size)];
+                $('#samOne').text(samurai),
+                $('#quoteOne').text(first[samurai])
+            }, 10000);
+
+            setInterval(function() {
+                const first = combineArrays(samurais, quotes);
+                const size = Object.keys(first).length;
+                let samurai = Object.keys(first)[Math.floor(Math.random() * size)];
+                $('#samTwo').text(samurai),
+                $('#quoteTwo').text(first[samurai])
+            }, 10000);
+
+            setInterval(function() {
+                const first = combineArrays(samurais, quotes);
+                const size = Object.keys(first).length;
+                let samurai = Object.keys(first)[Math.floor(Math.random() * size)];
+                $('#samThree').text(samurai),
+                $('#quoteThree').text(first[samurai])
+            }, 10000);
+        });
+    </script>
+}
 
 
 
