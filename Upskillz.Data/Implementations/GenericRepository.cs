@@ -91,6 +91,7 @@ namespace Upskillz.Data.Implementations
             _db.Attach(entity); // Checks to see that the incoming record is different from existing record
             _context.Entry(entity).State = EntityState.Modified;
         }
-        
+
+
     }
 }

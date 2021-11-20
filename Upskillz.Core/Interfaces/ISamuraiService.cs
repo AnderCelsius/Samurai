@@ -12,6 +12,7 @@ namespace Upskillz.Core.Interfaces
         Task<Response<IEnumerable<Samurai>>> GetSamurais();
         Task<Response<Samurai>> GetSamurai(string Id);
         Task<Response<IEnumerable<Samurai>>> Search(string name);
+        Task<Response<IEnumerable<Samurai>>> QuickSearch(string name);
         Task<Response<string>> UpdateSamurai(string samuraiId, UpdateSamuraiDto model);
         Task<Response<string>> UpdatePhoto(string samuraiId, AddImageDto imageDto);
         Task<Response<bool>> DeleteSamurai(string id);

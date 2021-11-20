@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<Samurai>;
+@inject SignInManager<AppUser> signInManager;
 
 @{
     ViewData["Samurais"] = "AllSamurais";
+    var user = await signInManager.UserManager.GetUserAsync(User);
+    IEnumerable<string> roles = null;
+    if(user != null)
+    {
+        roles = await signInManager.UserManager.GetRolesAsync(user);
+    }
 }
 
 <section class="container pt-5 pb-5">
@@ -14,18 +21,28 @@
         <h5 class="text-center align-content-center pt-2 pb-3"><em>Search your favourite Samurai and see what your legend has to say...</em></h5>
     </div>
     <div class="container pb-5" style="max-width: 1020px">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@@example.com</span>
+        <form method="get" action="@Url.Action("AllSamurais")" data-samurai-ajax="true" data-samurai-target="#samuraiList">
+            <div class="input-group mb-3">
+                <input type="search" name="searchTerm" data-samurai-autocomplete="@Url.Action("Autocomplete")" class="form-control" placeholder="Enter Sanurai's name" />
+                <input class="input-group-text" type="submit" id="basic-addon2" value="Seach By Name" />
+            </div>
+        </form>
+        <div class="row pt-5">
+            <div class="d-flex justify-content-between">
+                <h4>
+                    List of Samurais
+                </h4>
+                @if (roles!=null && roles.Contains("Admin"))
+                {
+                   <a asp-action="AddSamurai" asp-controller="Samurai"><span><img src="https://img.icons8.com/ios-glyphs/120/000000/add--v2.png" style="width:40px; height:40px;"/></span></a>
+                }                
+            </div>
         </div>
-        <h4 class="pt-5">
-            List of Samurais
-        </h4>
+
         <hr style="height: 2px;" />
-        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-            @Html.PartialAsync("_SamuraiList", Model)
-
+        <div id="samuraiList" class="row row-cols-1 row-cols-md-2 g-4">
+            @await Html.PartialAsync("_SamuraiList", Model)
         </div>
     </div>
 </section>
