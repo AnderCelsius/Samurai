@@ -8,7 +8,9 @@ using Upskillz.Core.Interfaces;
 using Upskillz.Data.Abstractions;
 using Upskillz.Models;
 using Upskillz.Models.Dtos.Samurai;
+using Upskillz.Web.Helpers;
 using Upskillz.Web.Models;
+using static Upskillz.Web.Helpers.HtmlUtility;
 
 namespace Upskillz.Web.Controllers
 {
@@ -56,6 +58,7 @@ namespace Upskillz.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
+        [NoDirectAccess]
         public async Task<IActionResult> AddSamurai(AddSamuraiViewModel model)
         {
             if (ModelState.IsValid)
@@ -64,8 +67,9 @@ namespace Upskillz.Web.Controllers
                 var response = await _samuraiService.AddSamurai(addSamuraiDto);
                 if (response.Succeeded)
                 {
-                    var result = response.Data;
-                    return Json(result, new JsonSerializerSettings());
+                    var data = await _samuraiService.GetSamurais();
+                    var samurais = data.Data;
+                    return Json(new { isValid = true, html = HtmlUtility.RenderRazorViewToString(this, "_SamuraiList", samurais) });
                 }
                 ModelState.AddModelError("", response.Message);
             }

@@ -30,53 +30,22 @@ $(function () {
         $input.autocomplete(options);
     };
 
+    showInPopup = (url, title) => {
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (res) {
+                $('#form-modal .modal-body').html(res);
+                $('#form-modal .modal-title').html(title);
+                $('#form-modal').modal('show');
+            }
+        })
+    }
+
     $("form[data-samurai-ajax='true']").submit(ajaxFormSubmit);
     $("input[data-samurai-autocomplete]").each(createAutocomplete);
 });
 
-showInPopup = (url, title) => {
-    $.ajax({
-        type: "GET",
-        url: url,
-        success: function (res) {
-            $('#form-modal .modal-body').html(res);
-            $('#form-modal .modal-title').html(title);
-            $('#form-modal').modal('show');
-        }
-    })
-}
-
-//function addSamurai() {
-//    var modal = $("#addSamuraiModal");
-//    var form = $('form[name="addSamuraiForm"]');
-
-//    form.validate();
-//    if (!form.valid()) {
-//        return;
-//    } else {
-//        var data = form.serialize();
-//        $.post("/Samurai/AddSamurai", data, function (res) {
-//            if (res) {
-//                modal.modal('hide');
-
-//            }
-//        })
-//    }
-//}
-
-const getSamurais = () => {
-    $.ajax({
-        type: 'GET',
-        url: "/Samurai/AllSamurais",
-        contentType: "application/json",
-        success: (res) => {
-            console.log(res)
-            var samurais = res.html;
-            $("#samuraiList").empty()
-            $("#samuraiList").append(samurais)
-        }
-    })
-}
 
 jQueryAjaxPost = form => {
 
@@ -108,3 +77,6 @@ jQueryAjaxPost = form => {
     //to prevent default form submit
     return false;
 }
+
+
+

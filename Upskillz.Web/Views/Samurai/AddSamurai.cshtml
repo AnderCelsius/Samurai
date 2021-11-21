@@ -10,14 +10,14 @@
 
     <div class="form-group mb-3">
 
-        <input type="text" class="form-control" asp-for="Name" placeholder="Samurai Name" />
+        <input type="text" id="samuraiName" class="form-control" asp-for="Name" placeholder="Samurai Name" />
         <span asp-validation-for="Name" class="text-danger"></span>
 
     </div>
 
     <div class="mb-3">
         <div>
-            <input type="text" class="form-control" asp-for="Quote" placeholder="Featured Quote" />
+            <input type="text" id="samuraiQuote" class="form-control" asp-for="Quote" placeholder="Featured Quote" />
             <span asp-validation-for="Quote" class="text-danger"></span>
         </div>
 
@@ -25,14 +25,14 @@
 
     <div class="mb-3">
         <div class="form-outline">
-            <textarea class="form-control" asp-for="ShortStory" placeholder="Story" rows="4"></textarea>
+            <textarea id="samuraiStory" class="form-control" asp-for="ShortStory" placeholder="Story" rows="4"></textarea>
             <span asp-validation-for="ShortStory" class="text-danger"></span>
         </div>
     </div>
 
     <div class="mb-3 form-check">
         <div class="modal-footer">
-            <input type="submit" class="btn btn-dark my-color" value="Submit" />
+            <input type="submit" class="btn btn-dark my-color" value="Submit"/>
         </div>
     </div>
 </form>
