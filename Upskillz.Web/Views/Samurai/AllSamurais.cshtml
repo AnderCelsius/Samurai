@@ -5,7 +5,7 @@
     ViewData["Samurais"] = "AllSamurais";
     var user = await signInManager.UserManager.GetUserAsync(User);
     IEnumerable<string> roles = null;
-    if(user != null)
+    if (user != null)
     {
         roles = await signInManager.UserManager.GetRolesAsync(user);
     }
@@ -32,10 +32,15 @@
                 <h4>
                     List of Samurais
                 </h4>
-                @if (roles!=null && roles.Contains("Admin"))
+                @if (roles != null && roles.Contains("Admin"))
                 {
-                   <a asp-action="AddSamurai" asp-controller="Samurai"><span><img src="https://img.icons8.com/ios-glyphs/120/000000/add--v2.png" style="width:40px; height:40px;"/></span></a>
-                }                
+                    <!-- Click on Modal Button -->
+                    <a class="btn" onclick="showInPopup('@Url.Action("AddSamurai", "Samurai", null, Context.Request.Scheme)', 'Add a Samurai')">
+                        <span>
+                            <img src="https://img.icons8.com/ios-glyphs/120/000000/add--v2.png" style="width:40px; height:40px;" />
+                        </span>
+                    </a>
+                }
             </div>
         </div>
 
@@ -46,4 +51,6 @@
         </div>
     </div>
 </section>
+
+
 

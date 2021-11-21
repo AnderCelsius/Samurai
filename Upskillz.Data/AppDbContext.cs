@@ -9,7 +9,7 @@ namespace Upskillz.Data
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) 
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
 
@@ -41,6 +41,15 @@ namespace Upskillz.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Samurai>()
+                .HasMany(a => a.Quotes)
+                .WithOne(b => b.Samurai);
+
+            modelBuilder.Entity<Quote>()
+                .Property(p => p.Id)
+                .HasIdentityOptions(startValue: 41)
+                .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Samurai>()
              .HasMany(s => s.Battles)

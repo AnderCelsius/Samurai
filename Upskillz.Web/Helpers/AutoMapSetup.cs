@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using System.Linq;
 using Upskillz.Models.Dtos.Authentication;
+using Upskillz.Models.Dtos.Samurai;
 using Upskillz.Web.Models;
 
 namespace Upskillz.Web.Helpers
@@ -10,6 +12,10 @@ namespace Upskillz.Web.Helpers
         {
             //Authentication
             CreateMap<LoginDto, LoginViewModel>().ReverseMap();
+
+            //Samurai
+            CreateMap<AddSamuraiViewModel, AddSamuraiDto>().ReverseMap();
+
         }
     }
 }

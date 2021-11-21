@@ -9,7 +9,9 @@ namespace Upskillz.Models.Dtos.Samurai
     public class AddSamuraiDto
     {
         public string Name { get; set; }
-        public List<Quote> Quotes { get; set; } = new List<Quote>();
+        public string ImageUrl { get; set; }
+        public string ShortStory { get; set; }
+        public string Quote { get; set; }
         public List<Battle> Battles { get; set; } = new List<Battle>();
     }
 }

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
 using Upskillz.Core.Interfaces;
 using Upskillz.Data.Abstractions;
+using Upskillz.Models;
+using Upskillz.Models.Dtos.Samurai;
 using Upskillz.Web.Models;
 
 namespace Upskillz.Web.Controllers
@@ -12,9 +15,11 @@ namespace Upskillz.Web.Controllers
     public class SamuraiController : Controller
     {
         private readonly ISamuraiService _samuraiService;
+        private readonly IMapper _mapper;
 
-        public SamuraiController(ISamuraiService samuraiService)
+        public SamuraiController(ISamuraiService samuraiService, IMapper mapper)
         {
+            _mapper = mapper;
             _samuraiService = samuraiService;
         }
 
@@ -39,6 +44,35 @@ namespace Upskillz.Web.Controllers
                 return View(searchResult);
 
         }
+
+
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        public IActionResult AddSamurai()
+        {
+            var model = new AddSamuraiViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddSamurai(AddSamuraiViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var addSamuraiDto = _mapper.Map<AddSamuraiDto>(model);
+                var response = await _samuraiService.AddSamurai(addSamuraiDto);
+                if (response.Succeeded)
+                {
+                    var result = response.Data;
+                    return Json(result, new JsonSerializerSettings());
+                }
+                ModelState.AddModelError("", response.Message);
+            }
+            return View(model);
+            
+        }
+
 
         [HttpGet]
         [AllowAnonymous]

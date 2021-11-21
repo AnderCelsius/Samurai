@@ -28,10 +28,24 @@ namespace Upskillz.Core.Services
         public async Task<Response<Samurai>> AddSamurai(AddSamuraiDto samuraiDto)
         {
             var samurai = _mapper.Map<Samurai>(samuraiDto);
-            await _unitOfWork.Samurais.Insert(samurai);
-            await _unitOfWork.Save();
+            var quote = new Quote()
+            {
+                Text = samuraiDto.Quote
+            };
+            samurai.Quotes.Add(quote);
 
-            return null;
+            try
+            {
+                await _unitOfWork.Samurais.Insert(samurai);
+                await _unitOfWork.Save();
+                return Response<Samurai>.Success($"{samurai.Name} added succesfully", samurai);
+
+            }
+            catch (Exception ex)
+            {
+                return Response<Samurai>.Fail(ex.Message);
+            }    
+            
         }
 
         public Task<Response<string>> DeleteQuotesForSamurai(int id)

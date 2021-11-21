@@ -4,78 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Upskillz.Data.Migrations
 {
-    public partial class AddedIdentity : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_BattleSamurai_Battles_BattleId",
-                table: "BattleSamurai");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BattleSamurai",
-                table: "BattleSamurai");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Battles",
-                table: "Battles");
-
-            migrationBuilder.DropColumn(
-                name: "BattleId",
-                table: "Battles");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Samurais",
-                type: "timestamp without time zone",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Samurais",
-                type: "timestamp without time zone",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<string>(
-                name: "BattlesId",
-                table: "BattleSamurai",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Id",
-                table: "Battles",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Battles",
-                type: "timestamp without time zone",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Battles",
-                type: "timestamp without time zone",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BattleSamurai",
-                table: "BattleSamurai",
-                columns: new[] { "BattlesId", "SamuraiId" });
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Battles",
-                table: "Battles",
-                column: "Id");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -95,6 +27,13 @@ namespace Upskillz.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Gender = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
+                    PublicId = table.Column<string>(type: "text", nullable: true),
+                    Avatar = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -113,6 +52,38 @@ namespace Upskillz.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Battles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Battles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Samurais",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    ShortStory = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Samurais", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,6 +192,53 @@ namespace Upskillz.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BattleSamurai",
+                columns: table => new
+                {
+                    SamuraiId = table.Column<string>(type: "text", nullable: false),
+                    BattlesId = table.Column<string>(type: "text", nullable: false),
+                    BattleId = table.Column<int>(type: "integer", nullable: false),
+                    DateJoined = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BattleSamurai", x => new { x.BattlesId, x.SamuraiId });
+                    table.ForeignKey(
+                        name: "FK_BattleSamurai_Battles_BattlesId",
+                        column: x => x.BattlesId,
+                        principalTable: "Battles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BattleSamurai_Samurais_SamuraiId",
+                        column: x => x.SamuraiId,
+                        principalTable: "Samurais",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Quotes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:IdentitySequenceOptions", "'41', '1', '', '', 'False', '1'")
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Text = table.Column<string>(type: "text", nullable: true),
+                    SamuraiId = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quotes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Quotes_Samurais_SamuraiId",
+                        column: x => x.SamuraiId,
+                        principalTable: "Samurais",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -258,21 +276,19 @@ namespace Upskillz.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_BattleSamurai_Battles_BattlesId",
+            migrationBuilder.CreateIndex(
+                name: "IX_BattleSamurai_SamuraiId",
                 table: "BattleSamurai",
-                column: "BattlesId",
-                principalTable: "Battles",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "SamuraiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Quotes_SamuraiId",
+                table: "Quotes",
+                column: "SamuraiId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_BattleSamurai_Battles_BattlesId",
-                table: "BattleSamurai");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -289,68 +305,22 @@ namespace Upskillz.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BattleSamurai");
+
+            migrationBuilder.DropTable(
+                name: "Quotes");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_BattleSamurai",
-                table: "BattleSamurai");
+            migrationBuilder.DropTable(
+                name: "Battles");
 
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Battles",
-                table: "Battles");
-
-            migrationBuilder.DropColumn(
-                name: "CreatedAt",
-                table: "Samurais");
-
-            migrationBuilder.DropColumn(
-                name: "UpdatedAt",
-                table: "Samurais");
-
-            migrationBuilder.DropColumn(
-                name: "BattlesId",
-                table: "BattleSamurai");
-
-            migrationBuilder.DropColumn(
-                name: "Id",
-                table: "Battles");
-
-            migrationBuilder.DropColumn(
-                name: "CreatedAt",
-                table: "Battles");
-
-            migrationBuilder.DropColumn(
-                name: "UpdatedAt",
-                table: "Battles");
-
-            migrationBuilder.AddColumn<int>(
-                name: "BattleId",
-                table: "Battles",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0)
-                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_BattleSamurai",
-                table: "BattleSamurai",
-                columns: new[] { "BattleId", "SamuraiId" });
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Battles",
-                table: "Battles",
-                column: "BattleId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BattleSamurai_Battles_BattleId",
-                table: "BattleSamurai",
-                column: "BattleId",
-                principalTable: "Battles",
-                principalColumn: "BattleId",
-                onDelete: ReferentialAction.Cascade);
+            migrationBuilder.DropTable(
+                name: "Samurais");
         }
     }
 }
