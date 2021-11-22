@@ -1,0 +1,29 @@
+﻿
+.menu li {
+    padding: 0.07rem;
+}
+
+.navbar-toggler-icon, navbar-toggler {
+    border-color: lightblue;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.nav-link{
+    color: white;
+}
+
+.active, .li:hover {
+    background-color: #FF534A;
+    color: white;
+}
+
+li a {
+    color: white;
+    text-transform: capitalize;
+    font-weight: 600;
+}

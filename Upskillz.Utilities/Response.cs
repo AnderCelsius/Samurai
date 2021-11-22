@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Upskillz.Utilities
 {
@@ -13,6 +8,17 @@ namespace Upskillz.Utilities
         public bool Succeeded { get; set; }
         public string Message { get; set; }
         public int StatusCode { get; set; }
+
+        public Response(int statusCode, bool success, string msg, T data)
+        {
+            Data = data;
+            Succeeded = success;
+            StatusCode = statusCode;
+            Message = msg;
+        }
+        public Response()
+        {
+        }
 
         /// <summary>
         /// Sets the data to the appropriate response

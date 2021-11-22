@@ -1,0 +1,107 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container p-5 m-5">
+    <div class="row p-5 m-5 shadow bg-body rounded">
+        <div class="col-lg-6 col-md-6 d-none d-sm-none d-sm-flex d-md-flex d-lg-flex m-0 p-0">
+            <img src="~/assets/img/Signup.jpg" alt="signup" class="img-fluid" />
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mt-sm-4">
+            <div class="container">
+                <div class="row mx-auto justify-content-center mt-5">
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center align-content-center">
+                                <div class="text-center align-content-center" style="width:80px; height:80px; border-radius:50px; background:#fff">
+                                    <img src="~/assets/img/logo.png" style="width:80px; height:80px; margin-top:20px" alt="Alternate Text" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-1 pt-5 border-0">
+                            <div class="card-body">
+                                @using (Html.BeginForm("Signup", "Auth", FormMethod.Post, new { novalidate = "true", @class = "needs-validation" }))
+                                {
+                                    <div class="form-group mb-2">
+
+                                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control has-validation", @placeholder = "First Name", @required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge bg-danger" })
+
+                                        @if (ViewBag.error != null)
+
+                                        {
+
+                                            <span class="badge bg-danger">@ViewBag.error</span>
+
+                                        }
+                                    </div>
+                                    <div class="form-group mb-2">
+
+                                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control has-validation", @placeholder = "Last Name", @required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "badge bg-danger" })
+
+                                        @if (ViewBag.error != null)
+
+                                        {
+
+                                            <span class="badge bg-danger">@ViewBag.error</span>
+
+                                        }
+                                    </div>
+
+
+                                    <div class="form-group mb-2">
+
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control has-validation", @placeholder = "Email", @required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge bg-danger" })
+
+                                        @if (ViewBag.error != null)
+
+                                        {
+
+                                            <span class="badge bg-danger">@ViewBag.error</span>
+
+                                        }
+                                    </div>
+                                    <div class="form-group mb-2">
+
+                                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control has-validation", @placeholder = "Password", @required = "required" })
+
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge bg-danger" })
+
+                                        @if (ViewBag.error != null)
+
+                                        {
+
+                                            <span class="badge bg-danger">@ViewBag.error</span>
+
+                                        }
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <input type="submit" value="Signup" class="btn btn-primary form-control btn-block h-50 w-100" />
+                                    </div>
+                                }
+                                <div class="d-flex justify-content-between mt-1 ">
+                                    <p>Have an account?</p>
+                                    <a asp-controller="Account" asp-action="Login" class="d-flex justify-content-end align-content-end">Login <i class='bx bx-right-arrow-alt'></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

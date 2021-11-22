@@ -1,0 +1,142 @@
+﻿@inject SignInManager<AppUser> signInManager;
+@{
+    var loggedInUser = await signInManager.UserManager.GetUserAsync(User);
+    var name = string.Empty;
+    if(loggedInUser != null)
+    {
+        name = loggedInUser.FirstName;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Upskillz.Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body>
+    <header>
+        color-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-navbar-dark fixed-top" style="background-color: #222630;">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/img/logo.png" alt="logo image" style="width: 50px;">
+                </a>
+                <button class="navbar-toggler" style="border-color: lightblue;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav">
+                        <li class="nav-item @Html.IsSelected(actions: "Index", controllers: "Home")">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li class="nav-item @Html.IsSelected(actions: "AllSamurais", controllers: "Samurai")">
+                            <a class="nav-link" href="@Url.Action("AllSamurais", "Samurai")">Samurais</a>
+                        </li>
+                        <li class="nav-item @Html.IsSelected(actions: "", controllers: "")">
+                            <a class="nav-link" href="@Url.Action("", "")">Quotes</a>
+                        </li>
+                        <li class="nav-item @Html.IsSelected(actions: "", controllers: "")">
+                            <a class="nav-link" href="@Url.Action("", "")">Battles</a>
+                        </li>
+                        <li class="nav-item @Html.IsSelected(actions: "", controllers: "")">
+                            <a class="nav-link" href="@Url.Action("", "")">About</a>
+                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Welcome @name
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item"><a class="dropdown-item">Action</a></li>
+                                    <li><a class="dropdown-item nav-link" style="color:#222630">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="dropdown-item">
+                                        <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <button class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</button>
+                                        </form>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="pb-5">
+        <main role="main" class="pb-3" style="overflow: auto">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="modal" tabindex="-1" id="form-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    <!-- Footer-->
+    <footer class="footer bg-dark mt-5" style="background-color: #222630;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#!">About</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2021. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

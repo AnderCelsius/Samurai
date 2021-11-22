@@ -1,0 +1,66 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    var request = ViewBag.request;
+}
+
+
+<div class="container p-5 m-5 ">
+    <div class="row p-5 m-5 shadow bg-body rounded">
+        <div class="col-lg-6 col-md-6 d-none d-sm-none d-sm-flex d-md-flex d-lg-flex m-0 p-0">
+            <img src="~/assets/img/Login.jpg" alt="login" class="img-fluid" />
+        </div>
+
+        <div class="col-sm-12 col-lg-6 bg-grey">
+            <div class="container">
+                <div class="row mx-auto justify-content-center mt-5">
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <div class="row mb-3 ">
+                            <div class="col-12 d-flex justify-content-center align-content-center">
+                                <div class="text-center align-content-center" style="width:80px; height:80px; border-radius:50px; background:#fff">
+                                    <img src="~/assets/img/logo.png" style="width:80px; height:80px; margin-top:20px" alt="Alternate Text" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-1 pt-5 border-0">
+                            <div class="card-body">
+                                <div class="text-danger" asp-validation-summary="All"></div>
+                                <form method="post">
+                                    <div class="form-group mb-2">
+                                        <input class="form-control" asp-for="Email" placeholder="Email" />
+                                        <span class="badge bg-danger" asp-validation-for=Email></span>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <input class="form-control" asp-for=Password placeholder="Password" />
+                                        <span class="badge bg-danger" asp-validation-for=Password></span>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <div class="checkbox">
+                                            <label asp-for=RememberMe>
+                                                <input asp-for=RememberMe/>
+                                                @Html.DisplayNameFor(m => m.RememberMe)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form mt-3">
+                                        <input type="submit" value="Login" class="btn btn-primary btn-block btn-lg h-50 w-100" />
+                                    </div>
+                                </form>
+                                <div class="d-flex justify-content-between m-2 ">
+                                    <a asp-controller="account" asp-action="register" p-2><i class='bx bx-arrow-back'></i> Register</a>
+                                    <a href="/Account/ForgotPassword">Forgot Password?</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

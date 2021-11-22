@@ -1,0 +1,44 @@
+﻿@model AddSamuraiViewModel
+
+@{
+    ViewData["Title"] = "Add Samurai";
+    Layout = null;
+}
+<!-- Modal -->
+<div class="text-danger" asp-validation-summary="All"></div>
+<form action="AddSamurai" id="form" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+
+    <div class="form-group mb-3">
+
+        <input type="text" id="samuraiName" class="form-control" asp-for="Name" placeholder="Samurai Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <div>
+            <input type="text" id="samuraiQuote" class="form-control" asp-for="Quote" placeholder="Featured Quote" />
+            <span asp-validation-for="Quote" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <div class="form-outline">
+            <textarea id="samuraiStory" class="form-control" asp-for="ShortStory" placeholder="Story" rows="4"></textarea>
+            <span asp-validation-for="ShortStory" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3 form-check">
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-dark my-color" value="Submit"/>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

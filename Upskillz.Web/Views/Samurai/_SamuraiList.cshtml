@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Samurai>;
+
+@foreach (var samurai in Model)
+{
+    <div class="col-sm-4 py-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h3 class="card-title">@samurai.Name</h3>
+                <p class="card-text"><em>@samurai.Quotes.FirstOrDefault().Text.</em></p>
+            </div>
+            <div class="card-footer d-md-block">
+                <a asp-controller="Samurai" asp-action="SamuraiDetails" asp-route-samuraiId="@samurai.Id" class="btn btn-dark btn-block">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+}
